@@ -13,15 +13,19 @@ import Products from '../screens/Products';
 import Order from '../screens/Order';
 import News from '../screens/News';
 import Account from '../screens/Account';
-import Admin from '../screens/Admin'
+import Admin from '../screens/Admin';
 
 import ProductsStack from './ProductsStack';
+import {useSelector} from 'react-redux';
+import OrderStack from './OrderStack';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
 
 function MyTabBar({state, descriptors, navigation}) {
+  const cartData = useSelector(store => store.cart);
+
   return (
     <View style={styles.bottomTab}>
       <View style={styles.container}>
@@ -60,7 +64,7 @@ function MyTabBar({state, descriptors, navigation}) {
                 return 'shop';
               case 'ProductsStack':
                 return 'shopping-basket';
-              case 'Order':
+              case 'OrderStack':
                 return 'shopping-cart';
               case 'News':
                 return 'newsletter';
@@ -68,7 +72,6 @@ function MyTabBar({state, descriptors, navigation}) {
                 return 'user';
             }
           };
-          // };
 
           return (
             <TouchableOpacity
@@ -93,6 +96,24 @@ function MyTabBar({state, descriptors, navigation}) {
                   isFocused && styles.activeShadow,
                 ]}
               />
+              {route.name === 'OrderStack' && cartData.totalQuantity > 0 && (
+                <Text
+                  style={[
+                    {
+                      position: 'absolute',
+                      backgroundColor: colors.orange1,
+                      paddingHorizontal: 5,
+                      borderRadius: 999,
+                      color: '#fff',
+                      fontWeight: 'bold',
+                    },
+                    {
+                      transform: [{translateX: 15}],
+                    },
+                  ]}>
+                  {cartData.totalQuantity}
+                </Text>
+              )}
             </TouchableOpacity>
           );
         })}
@@ -118,7 +139,7 @@ const AppFlow = () => {
       <Tab.Screen name="ProductsStack" component={ProductsStack} />
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="News" component={News} />
-      <Tab.Screen name="Order" component={Order} />
+      <Tab.Screen name="OrderStack" component={OrderStack} />
       <Tab.Screen name="Account" component={Account} />
     </Tab.Navigator>
   );

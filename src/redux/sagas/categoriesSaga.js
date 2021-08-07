@@ -2,6 +2,7 @@ import {call, put, select, takeLatest} from 'redux-saga/effects';
 import {
   GET_CATEGORIES_REQUEST,
   getCategoriesSuccess,
+  getCategoriesFail,
 } from '../actions/categoriesAction';
 import categoriesApi from './../../apis/categoriesApi';
 
@@ -10,12 +11,12 @@ function* fetchCategories() {
     const data = yield call(categoriesApi.get);
     yield put(getCategoriesSuccess(data));
   } catch (error) {
-    console.log('saga', error);
+    yield put(getCategoriesFail(error));
   }
 }
 
-function* watchProductsRequest() {
+function* watchCategoriesRequest() {
   yield takeLatest(GET_CATEGORIES_REQUEST, fetchCategories);
 }
 
-export default watchProductsRequest;
+export default watchCategoriesRequest;

@@ -1,6 +1,6 @@
 import firestore from '@react-native-firebase/firestore';
 
-async function get() {
+async function getAll() {
   try {
     const querySnapshot = await firestore().collection('products').get();
     let data = [];
@@ -30,7 +30,7 @@ async function create(productsData) {
 }
 
 const productsApi = {
-  get,
+  getAll,
   create,
 };
 

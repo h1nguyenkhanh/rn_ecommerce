@@ -12,6 +12,7 @@ import Order from '../screens/Order';
 import News from '../screens/News';
 import Account from '../screens/Account';
 import AppFlow from './AppFlow';
+import AuthFlow from './AuthFlow';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -23,7 +24,8 @@ const MainNavigation = () => {
   // }
   return (
     <NavigationContainer>
-      <AppFlow></AppFlow>
+      {/* <AppFlow></AppFlow> */}
+      <AuthFlow />
     </NavigationContainer>
   );
 };

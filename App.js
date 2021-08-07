@@ -4,13 +4,16 @@ import {Provider} from 'react-redux';
 import MainNavigation from './src/navigation';
 import store from './src/redux/store';
 import Entry from './src/screens/Entry';
+import {NativeBaseProvider} from 'native-base';
 
 const App = () => {
   return (
     <Provider store={store}>
-      <Entry>
-        <MainNavigation></MainNavigation>
-      </Entry>
+      <NativeBaseProvider>
+        <Entry>
+          <MainNavigation></MainNavigation>
+        </Entry>
+      </NativeBaseProvider>
     </Provider>
   );
 };

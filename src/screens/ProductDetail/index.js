@@ -35,7 +35,7 @@ const ProductDetail = ({route}) => {
             }}>
             <Text
               style={{fontSize: 25, color: colors.black2, fontWeight: 'bold'}}>
-              {data.name}
+              {data.productName}
             </Text>
           </View>
           <View>
@@ -64,7 +64,7 @@ const ProductDetail = ({route}) => {
             <Text>Số lượng</Text>
             <TextInput
               value={quantity}
-              onChange={setQuantity}
+              onChangeText={setQuantity}
               keyboardType="numeric"
               style={{
                 marginHorizontal: 10,
@@ -74,6 +74,8 @@ const ProductDetail = ({route}) => {
                 paddingVertical: 5,
                 width: 100,
                 borderRadius: 15,
+                textAlign: 'center',
+                fontWeight: 'bold',
               }}></TextInput>
           </View>
           <View
