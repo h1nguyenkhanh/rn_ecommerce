@@ -24,8 +24,8 @@ const MainNavigation = () => {
   // }
   return (
     <NavigationContainer>
-      {/* <AppFlow></AppFlow> */}
-      <AuthFlow />
+      <AppFlow></AppFlow>
+      {/* <AuthFlow /> */}
     </NavigationContainer>
   );
 };
